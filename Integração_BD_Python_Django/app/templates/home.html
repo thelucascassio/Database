@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+
+    <ul>
+        {% for produto in produtos %}
+            <li>
+                <strong>ID:</strong> {{ produto.0 }}<br>
+                <strong>Nome:</strong> {{ produto.1 }}<br>
+                <strong>Preço Unitário:</strong> R$ {{ produto.2 }}
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Lista de Categorias</h2>
+    <ul>
+        {% for categoria in categorias %}
+            <li>
+                <strong>ID:</strong> {{ categoria.0 }}<br>
+                <strong>Nome:</strong> {{ categoria.1 }}<br>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Preço Unitário</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+                <tr>
+                    <td>{{produto.0}}</td>
+                    <td>{{produto.1}}</td>
+                    <td>{{produto.2}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Lista de Categorias</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+                <tr>
+                    <td>{{categoria.0}}</td>
+                    <td>{{categoria.1}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
