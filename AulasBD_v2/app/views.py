@@ -97,7 +97,7 @@ def exercicio_2(request):
 
 def exercicio_3(request):
     # define a página HTML (template) que deverá será carregada
-    template = 'exercicio_1.html'
+    template = 'exercicio_3.html'
     try:
         # obtem a conexao com o BD
         conexao = obter_conexao()
@@ -107,14 +107,18 @@ def exercicio_3(request):
 
         # define o comando SQL que será executado
         sql = '''
-            SELECT  dep.nome as 'departamento',
-                    fun.nome, 
-                    fun.telefones
-
-            FROM Funcionario fun
-            INNER JOIN Departamento dep ON dep.id = fun.departamento_id
-
-            ORDER BY dep.nome, fun.nome
+            SELECT 
+                Estado.nome AS nome_estado,
+                Cidade.nome AS nome_cidade,
+                Bairro.nome AS nome_bairro
+            FROM 
+                Bairro
+            JOIN 
+                Cidade ON Bairro.cidade_id = Cidade.id
+            JOIN 
+                Estado ON Cidade.estado_id = Estado.sigla
+            ORDER BY 
+                Estado.nome, Cidade.nome, Bairro.nome;
         '''
         
         # usa o cursor para executar o SQL
@@ -130,25 +134,31 @@ def exercicio_3(request):
         return render(request, template, context={'ERRO': err})
 
 def exercicio_4(request):
-    # define a página HTML (template) que deverá será carregada
-    template = 'exercicio_1.html'
+    template = 'exercicio_4.html'
     try:
-        # obtem a conexao com o BD
         conexao = obter_conexao()
-
-        # define um cursor para executar comandos SQL
         cursor = conexao.cursor()
-
-        # define o comando SQL que será executado
         sql = '''
-            SELECT  dep.nome as 'departamento',
-                    fun.nome, 
-                    fun.telefones
-
-            FROM Funcionario fun
-            INNER JOIN Departamento dep ON dep.id = fun.departamento_id
-
-            ORDER BY dep.nome, fun.nome
+            SELECT 
+                f.descricao AS fabricante,
+                m.descricao AS modelo,
+                c.ano_fabricacao,
+                c.cor,
+                c.placa,
+                c.preco,
+                cat.descricao AS categoria
+            FROM 
+                Carro c
+            JOIN 
+                Modelo m ON c.modelo_id = m.id
+            JOIN 
+                Fabricante f ON m.fabricante_id = f.id
+            JOIN 
+                Categoria cat ON c.categoria_id = cat.id
+            ORDER BY 
+                f.descricao,
+                m.descricao,
+                c.ano_fabricacao
         '''
         
         # usa o cursor para executar o SQL

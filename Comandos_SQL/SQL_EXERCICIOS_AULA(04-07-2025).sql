@@ -20,7 +20,7 @@ select * from Turma
 insert into Turma(nome)
 	VALUES
 	('InfoWeb'),
-	('Administração'),
+	('Administraï¿½ï¿½o'),
 	('MSI')
 
 insert into Aluno(nome, telefones, idade, data_nascimento, turma_id)
@@ -47,14 +47,14 @@ insert into Aluno(nome, telefones, idade, data_nascimento, turma_id)
 	('Gabriela', '(84) 92222-3333', 18, '08/04/2007', 2),
 	('Henrique', null, 16, '23/11/2008', 2),
 	('Isabela', '(84) 93333-4444', 17, '14/06/2007', 2),
-	('João Pedro', '(84) 94444-5555', 18, NULL, 2),
+	('Joï¿½o Pedro', '(84) 94444-5555', 18, NULL, 2),
 	('Larissa', '(84) 95555-6666', 17, '11/08/2007', 3),
 	('Lucas', null, 16, '25/10/2008', 3),
 	('Mariana', '(84) 96666-7777', NULL, '03/06/2007', 3),
 	('Matheus', '(84) 97777-8888', 18, NULL, 3),
-	('Natália', null, 17, '27/02/2007', 3),
-	('Otávio', '(84) 98888-9999', NULL, NULL, 3),
-	('Patrícia', '(84) 99999-0000', 16, '21/09/2008', 3),
+	('Natï¿½lia', null, 17, '27/02/2007', 3),
+	('Otï¿½vio', '(84) 98888-9999', NULL, NULL, 3),
+	('Patrï¿½cia', '(84) 99999-0000', 16, '21/09/2008', 3),
 	('Rafael', null, 18, '09/12/2006', 3),
 	('Sara', '(84) 90000-1111', 17, NULL, 3),
 	('Thiago', '(84) 91111-2222', 17, '06/05/2007', 3)
