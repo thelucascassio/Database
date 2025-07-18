@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block titulo_pagina %}
-    <h2>Exercício-1</h2>
+    <h2>Exercício-3b</h2>
 {% endblock %}  
 
 {% block conteudo %}
+    <h3>Vendas registradas no sistema</h3>
     <!-- TABELA HTML COM OS REGISTROS -->
     <table>
         <!-- CABECALHO DA TABELA HTML -->
         <thead>
             <tr>
-                <th>Departamento</th>
-                <th>Nome</th>
-                <th>Telefones</th>
+                <th>Data</th>
+                <th>Valor Total</th>
+                <th>Produto</th>
+                <th>Nome do Cliente</th>
+                <th>Nome do Vendedor</th>
             </tr>
         </thead>
         <!-- LINHAS DA TABELA HTML CONTENDO OS REGISTROS -->
@@ -22,11 +25,11 @@
             <tr>
                 <td>{{ reg.0 }}</td>
                 <td>{{ reg.1 }}</td>
-                <td>{{ reg.2|default_if_none:'Não possui' }}</td>
+                <td>{{ reg.2}}</td>
+                <td>{{ reg.3}}</td>
+                <td>{{ reg.4}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
-
-

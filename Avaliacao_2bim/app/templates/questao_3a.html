@@ -1,21 +1,19 @@
 {% extends "base.html" %}
 
 {% block titulo_pagina %}
-    <h2>Exercício-4</h2>
+    <h2>Exercício-3a</h2>
 {% endblock %}  
 
 {% block conteudo %}
+    <h3>Listagem de produtos cadastrados no sistema</h3>
     <!-- TABELA HTML COM OS REGISTROS -->
     <table>
         <!-- CABECALHO DA TABELA HTML -->
         <thead>
             <tr>
-                <th>Fabricante</th>
-                <th>Modelo</th>
-                <th>Ano de Fabricação</th>
-                <th>Cor</th>
-                <th>Placa</th>
-                <th>Preço</th>
+                <th>ID do Produto</th>
+                <th>Nome do Produto</th>
+                <th>Valor Unitário</th>
                 <th>Categoria</th>
             </tr>
         </thead>
@@ -28,11 +26,10 @@
                 <td>{{ reg.1 }}</td>
                 <td>{{ reg.2}}</td>
                 <td>{{ reg.3}}</td>
-                <td>{{ reg.4}}</td>
-                <td>{{ reg.5}}</td>
-                <td>{{ reg.6}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
+
+
