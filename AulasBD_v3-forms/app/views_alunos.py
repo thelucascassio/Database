@@ -8,7 +8,6 @@ from .util_views import *
 
 
 # DEFINE O PREFIXO DA PÁGINA HTML (TEMPLATE) QUE DEVERÁ SERÁ CARREGADA
-#    - Exemplo: 'categorias', 'funcionarios'
 TEMPLATE_PREFIXO = 'alunos'
 
 
@@ -18,8 +17,8 @@ SQL_SELECT_GERAL = """
             aluno.nome,
             aluno.telefones,
             aluno.idade,
-            aluno.data_nascimento as nasc,
-            turma.nome
+            aluno.data_nascimento,
+            turma.nome as nome_turma
     
     FROM    Aluno aluno
     INNER JOIN Turma turma ON turma.id = aluno.turma_id 
@@ -66,7 +65,7 @@ SQL_INCLUSAO = """
 #            se o seu valor deve estar entre aspas-simples ('')
 # ======================================================================== #
 SQL_ALTERACAO = """
-    UPDATE TABELA 
+    UPDATE Aluno 
 
     SET nome = '{}',
         telefones = '{}', 
@@ -88,41 +87,22 @@ class ViewCRUD (ViewGenericCRUD):
             'telefones',
             'idade',
             'data_nascimento',
+            'turma_id',
             # 0BS-2: DEIXAR O ID POR ULTIMO
             'id',
         ]
-
-    
-
-
-
-# ======================================================================== #
-# A T E N Ç Ã O - ESCOLHA 1 DENTRE OS 2 FORMULÁRIOS DE EXEMPLO ABAIXO      #
-#                 E APAGUE AQUELE QUE VOCÊ NÃO FOR USAR                    #
-# ======================================================================== #
-
-# =============================================================
-# FORMULÁRIO - EXEMPLO 1
-# =============================================================
-class Formulario(forms.Form):
-    # ID (DEIXAR ASSIM, NÃO ALTERAR)
-    id = forms.IntegerField(label='ID', 
-            widget=forms.TextInput(attrs={'readonly': 'readonly'}), required=False)
-    # campos do formulario
-    nome = forms.CharField(label='Nome', max_length=30, required=True)
         
 # =============================================================
 # FORMULÁRIO - EXEMPLO 2   ( CONTENDO CAMPO <SELECT> )
 # =============================================================
 class Formulario(forms.Form):
-    # ID (DEIXAR ASSIM, NÃO ALTERAR)
     id = forms.IntegerField(label='ID', 
             widget=forms.TextInput(attrs={'readonly': 'readonly'}), required=False)
     # campos do formulario
     nome = forms.CharField(label='Nome', max_length=90, required=True)
     telefones = forms.CharField(label='Telefones', max_length=20, required=False)
     idade = forms.IntegerField(label='Idade', required=True)           
-    dataNascimento = forms.DateField(label='Nascimento', required=True)        
+    data_nascimento = forms.DateField(label='Nascimento', required=True)        
     turma_id = forms.ChoiceField(label='Turma')
 
     # construtor do Formulario
@@ -132,14 +112,8 @@ class Formulario(forms.Form):
             # obtem os registros da tabela Departamentos
             turmas = executar_select('SELECT id, nome FROM Turma ORDER BY nome')
             # carrega os departamentos no <select> da página usando o ChoiceField
-            self.fields['departamento_id'].choices = turmas
-    
-
-
-
-# ============================================================= #
-# OBS: NÃO PRECISA ALTERAR ESTA PARTE DO CÓDIGO                 #
-# ============================================================= #
+            self.fields['turma_id'].choices = turmas
+            
 # classe que será utilizada como VIEW e que contem os 
 # métodos listar(), editar() e salvar()
 VIEW_CRUD = ViewCRUD(

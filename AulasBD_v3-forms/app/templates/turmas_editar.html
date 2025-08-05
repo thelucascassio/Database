@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block titulo_pagina %}
-    <h2 class="titulo_pagina">Departamentos - {{ acao }}</h2>
+    <h2 class="titulo_pagina">Turmas - {{ acao }}</h2>
 {% endblock %}
 
 {% block conteudo %}
@@ -13,7 +13,7 @@
         Nome: <strong>{{ reg.nome }}</strong>
     </p>
     <br>
-    <form action="/departamentos/salvar/" method="post">
+    <form action="/turmas/salvar/" method="post">
         {% csrf_token %}
         <input id="acao" name="acao" type="hidden" value="{{ acao }}">
         
@@ -21,13 +21,13 @@
 
         <input class="btn-del" type="submit" value="Excluir">
 
-        <a class="btn-def" href="{% url 'departamentos_listar' %}">Cancelar</a>
+        <a class="btn-def" href="{% url 'turmas_listar' %}">Cancelar</a>
         
     </form>
     
     
 {% else %}
-    <form action="/departamentos/salvar/" method="post">
+    <form action="/turmas/salvar/" method="post">
         {% csrf_token %}
         
         <!-- CAMPOS DEFINIDOS NO FORMULARIO -->
@@ -40,7 +40,7 @@
         <label for=""></label>
         <button class="btn" type="submit">Salvar</button>
         &nbsp;
-        <a class="btn-def" href="{% url 'departamentos_listar' %}">Cancelar</a>        
+        <a class="btn-def" href="{% url 'turmas_listar' %}">Cancelar</a>        
 
     </form>
 {% endif%}
