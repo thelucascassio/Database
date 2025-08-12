@@ -6,7 +6,7 @@ def obter_conexao():
     servidor = '.\SQLEXPRESS'
     banco    = '20231011110002'
     usuario  = 'sa'
-    senha    = '12345' # no lab. 6: 12345. Lab. 5: Senha@123
+    senha    = 'Senha@123' # no lab. 6: 12345. Lab. 5: Senha@123
 
     # realiza conexao com o BD
     string_conexao = f'Driver={driver};Server={servidor};Database={banco};UID={usuario};PWD={senha}'

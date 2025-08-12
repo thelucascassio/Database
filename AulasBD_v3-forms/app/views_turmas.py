@@ -44,8 +44,8 @@ SQL_EXCLUSAO = """
 #          se o seu valor deve estar entre aspas-simples ('')
 # ======================================================================== #
 SQL_INCLUSAO = """ 
-    INSERT INTO Turma(id, nome) 
-    VALUES({}, '{}')
+    INSERT INTO Turma(nome) 
+    VALUES('{}')
 """
 
 
